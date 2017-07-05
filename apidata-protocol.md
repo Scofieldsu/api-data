@@ -27,13 +27,14 @@
 {
     apiname-1:{
         "name":"",
+        "description":"",
+        "return":"",
         "params":{
             "param_a": type
         },
         "param_explain":{
             "param_a": explain
-        },
-        "return":""
+        }
     },
     apiname-2:{...}
 }
