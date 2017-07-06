@@ -2,6 +2,7 @@
 - author:yu
 - datetime:2017-07-05
 - version:0.1.0
+
 ---
    API-DATA规范定义了接口的注释格式（以便于采集接口信息返回给api-test应用进行接口测试）和api-test应用需要的数据格式。
 
@@ -22,10 +23,13 @@ def test_api(my_dict, my_int, my_str, my_list, my_datetime):
     """
   return result
 ```
+
 > 在pycharm中可以利用自动补全参数的注释（pycharm没有自动补全 :description ），但还是需要你填写参数的类型和说明。
 
 ---
+
 ### JSON-RPC
+
    根据JSON-RPC规范整合接口数据.当服务收到method为get_all_api的请求时，应该返回一定格式的数据。
 
 json-rpc的request：
@@ -127,5 +131,7 @@ json-rpc的request：
 
 ```
 
+
 ---
+
 ### 其他规范协议中如何配合API-DATA规范  待续
