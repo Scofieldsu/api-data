@@ -8,7 +8,7 @@
 
    我们提供对于下面模型中注释进行转换到api-test应用需要的数据格式的公共方法。
 
-- 接口模型：
+- 接口的注释模型：
 ``` python
 
 def test_api(my_dict, my_int, my_str, my_list, my_datetime):
