@@ -13,7 +13,7 @@ def get_all_api_data(*args, **kwargs):
     """
     # 从method_map获取所有接口方法，重组数格式
     _name = sys._getframe().f_code.co_name
-    api_dict = api.method_map
+    api_dict = api.method_doc_map
     api_name_list = api_dict.keys()
     result = dict()
     for i in api_name_list:

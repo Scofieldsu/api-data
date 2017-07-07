@@ -36,9 +36,13 @@ def dict_move_key(dict_a, dict_b, key):
 def compose_api_info(key, api_dict):
     tem_res = {}
     tem_res["name"] = key
-    doc_dict = trans_str_to_dict(api_dict[key].__doc__)
-    tem_res = dict_move_key(tem_res, doc_dict, "description")
-    tem_res = dict_move_key(tem_res, doc_dict, "return")
-    tem_res = dict_move_key(tem_res,doc_dict,"param_explain")
+    doc_dict = trans_str_to_dict(api_dict[key])
+    move_key = [
+        "description",
+        "return",
+        "param_explain"
+    ]
+    for x in move_key:
+        tem_res = dict_move_key(tem_res,doc_dict, x)
     tem_res["params"] = doc_dict
     return tem_res

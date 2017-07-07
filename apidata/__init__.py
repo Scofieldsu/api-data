@@ -21,15 +21,15 @@ class Singleton(object):
 class Apiadmin(Singleton):
 
     def __init__(self):
-        self.method_map = dict()
+        self.method_doc_map = dict()
 
 
 
 def api_data(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        if callable(func) and func.__name__ not in api.method_map:
-            api.method_map[func.__name__] = func
+        if callable(func) and func.__name__ not in api.method_doc_map:
+            api.method_doc_map[func.__name__] = func.__doc__
         return func(*args, **kwargs)
     return wrapper
 
