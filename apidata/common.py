@@ -2,6 +2,7 @@
 import sys
 from apidata import api,api_data
 from apidata.utils.api_tools import compose_api_info
+from apidata.utils.api_tools import get_filename_list
 
 @api_data
 def get_all_api_data(*args, **kwargs):
@@ -22,3 +23,6 @@ def get_all_api_data(*args, **kwargs):
         result[i] = item
     result.pop(_name)
     return result
+
+
+a = get_filename_list()

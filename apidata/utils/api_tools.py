@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 PARAMS_TYPE = ['dict','int','str','float','list','datetime']
 
 # 把function的__doc__字符串转换为字典
@@ -46,3 +45,18 @@ def compose_api_info(key, api_dict):
         tem_res = dict_move_key(tem_res,doc_dict, x)
     tem_res["params"] = doc_dict
     return tem_res
+
+
+# 获取路径下 文件名列表
+def get_filename_list(dir=None,file_type = 'py'):
+    import os
+    file_list = list()
+    if not dir:
+        dirs = os.path.abspath('.')
+    else:
+        dirs = dir
+    for root, dirs, files in os.walk(dirs):
+        for filename in files:
+            if filename.endswith(file_type):
+                file_list.append(os.path.join(root, filename))
+    return file_list
