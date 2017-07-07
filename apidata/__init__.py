@@ -9,7 +9,9 @@ __version__ = version = '.'.join(map(str, __version))
 
 
 class Singleton(object):
+
     _instance = None
+
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
@@ -25,9 +27,13 @@ class Apiadmin(Singleton):
 
 def api_data(func):
     @wraps(func)
-    def _warps(*args, **kwargs):
-        api.method_map[func.__name__] = func
+    def wrapper(*args, **kwargs):
+        if callable(func) and func.__name__ not in api.method_map:
+            api.method_map[func.__name__] = func
         return func(*args, **kwargs)
-    return _warps
+    return wrapper
+
 
 api = Apiadmin()
+
+
