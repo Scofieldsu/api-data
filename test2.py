@@ -17,7 +17,7 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    # login_test('yu','u')
+    #login_test('yu','u')
     # logout_test('u')
-    print api.method_map
+    print api.method_doc_map
     app.run()
