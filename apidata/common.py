@@ -7,7 +7,7 @@ from apidata.utils.file_parse import get_decorator_func_doc,get_filename_list
 
 
 #  提供API-DATA规范的数据
-def get_all_api_data(dir=None, file_type='py', decor_list=['api_data']):
+def get_all_api_data(dir=None, file_type='py',data_api='get_all_api', decor_list=['api_data']):
     """
     :description 获取接口信息
     :param dir: 需要解析的路径
@@ -28,6 +28,8 @@ def get_all_api_data(dir=None, file_type='py', decor_list=['api_data']):
     for i in api_name_list:
         item = compose_api_info(i, api.method_doc_map)
         result[i] = item
+    if data_api in result:
+        result.pop(data_api)
     return result
 
 
