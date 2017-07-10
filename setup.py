@@ -21,7 +21,7 @@ setup(
     name="api-data",
     version=version,
     packages=find_packages(),
-    test_suite="nose.collector",
+    test_suite="tests",
 
     # metadata for upload to PyPI
     author="Yu Yuan",
