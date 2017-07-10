@@ -18,37 +18,37 @@ def get_filename_list(dir=None,file_type = 'py'):
 
 
 # 返回该文件列表中所有使用某装饰器的函数的__doc__
-def  get_decorator_func_doc(file_list,decor_name_list=['api_data']):
+def  get_decorator_func_doc(file_list,decor_list=['api_data']):
     import ast
     doc_dict = dict()
     for filename in file_list:
         tree = parse_ast(filename)
-        doc_dict = funcdef_dict(tree, doc_dict, decor_name_list)
-        doc_dict = cls_dict(tree, doc_dict, decor_name_list)
+        doc_dict = funcdef_dict(tree, doc_dict, decor_list)
+        doc_dict = cls_dict(tree, doc_dict, decor_list)
     return doc_dict
 
 
 
 # 从ast抽象语法树中的对象 返回FunctionDef的注释字典
-def funcdef_dict(tree, doc_dict, decor_name_list):
+def funcdef_dict(tree, doc_dict, decor_list):
     for func in get_ast_functions(tree.body):
         if hasattr(func, 'decorator_list'):
             for i in func.decorator_list:
                 if hasattr(i, 'id'):
-                    if i.id in decor_name_list:
+                    if i.id in decor_list:
                         doc_dict[func.name] = ast.get_docstring(func)
     return doc_dict
 
 
 # 从ast抽象语法树中的对象 返回ClassDef中FunctionDef的注释字典
-def cls_dict(tree, doc_dict, decor_name_list):
+def cls_dict(tree, doc_dict, decor_list):
     for clas in get_ast_class(tree.body):
         name_prefix = clas.name.lower()
         for func in get_ast_functions(clas.body):
             if hasattr(func, 'decorator_list'):
                 for i in func.decorator_list:
                     if hasattr(i, 'id'):
-                        if i.id in decor_name_list:
+                        if i.id in decor_list:
                             doc_dict[name_prefix + '.' + func.name] = ast.get_docstring(func)
     return doc_dict
 
