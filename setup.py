@@ -26,8 +26,8 @@ setup(
     # metadata for upload to PyPI
     author="Yu Yuan",
     author_email="yuyuan_v@163.com",
-    url="https://github.com/Scofieldsu/flask-api",
-    description="flask jsonrpc api test",
+    url="https://github.com/Scofieldsu/api-data.git",
+    description=" convert func's __doc__ to API-DATA protocol 's  data ",
     long_description=read('readme.md'),
 
     # Full list:
@@ -41,6 +41,8 @@ setup(
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
