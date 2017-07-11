@@ -23,8 +23,9 @@ def  get_decorator_func_doc(file_list,decor_list=['api_data']):
     doc_dict = dict()
     for filename in file_list:
         tree = parse_ast(filename)
-        doc_dict = funcdef_dict(tree, doc_dict, decor_list)
-        doc_dict = cls_dict(tree, doc_dict, decor_list)
+        if isinstance(tree, ast.Module):
+            doc_dict = funcdef_dict(tree, doc_dict, decor_list)
+            doc_dict = cls_dict(tree, doc_dict, decor_list)
     return doc_dict
 
 
