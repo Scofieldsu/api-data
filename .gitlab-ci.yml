@@ -1,0 +1,37 @@
+image: docker:latest
+
+variables:
+  DOCKER_DRIVER: overlay
+  DC_REGISTRY: 192.168.5.41
+  DC_REGISTRY_USER: gitlab_ci
+  DC_REGISTRY_PASS: Gitlab_c1
+
+services:
+- docker:dind
+
+before_script:
+- export BUILD_TAG=$(cat version)
+- docker login -u $DC_REGISTRY_USER -p $DC_REGISTRY_PASS $DC_REGISTRY
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - find . -name '*.pyc' -delete
+    - echo $DC_REGISTRY/library/$CI_PROJECT_NAME:$BUILD_TAG
+    - docker build -t $DC_REGISTRY/library/$CI_PROJECT_NAME:$BUILD_TAG .
+    - docker push $DC_REGISTRY/library/$CI_PROJECT_NAME:$BUILD_TAG
+  tags:
+    - docker
+
+test:
+  stage: test
+  script:
+    - docker run $DC_REGISTRY/library/$CI_PROJECT_NAME:$BUILD_TAG pytest apidata/tests/
+  tags:
+    - docker
+
+

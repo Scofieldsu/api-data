@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 import pytest
-from apidata import api_data
 from apidata.utils.api_tools import trans_str_to_dict,dict_move_key,compose_api_info
 
 

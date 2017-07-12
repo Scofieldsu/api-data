@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 
-import pytest
 from apidata.common import get_all_api_data
 from file_parse_source import source_path
 
