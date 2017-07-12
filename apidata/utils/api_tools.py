@@ -47,7 +47,7 @@ def dict_move_key(dict_a, dict_b, key):
 
 # 重组接口信息为API-DATA中的数据格式
 def compose_api_info(key, api_doc_dict):
-    tem_res = {}
+    tem_res = dict()
     tem_res[fgs[0]] = key
     doc_dict = trans_str_to_dict(api_doc_dict[key])
     move_key = [
