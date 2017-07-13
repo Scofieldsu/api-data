@@ -6,18 +6,18 @@ import ast
 def get_filename_list(dir=None, file_type = 'py', except_dirs=None,except_paths=None, except_files=None):
     #######################
     # except_dirs
-    # 遍历except_dirs下所有子目录，并加入到except_path
-    # 例如 .git目录下有很多子目录，只需要将 .git 的完整路径加入except_dirs，则其子目录也不会被解析
+    # 遍历except_dirs下所有子目录，并except_dirs及其子目录加入到except_path
+    # 例如 .git目录下有很多子目录，只需要将 .git 的完整路径加入except_dirs，则.git及其子目录也不会被解析
 
 
     # except_path
-    # 对except_path下文件排除解析，但except_path路径下的子目录中的文件还是会被解析
+    # 对except_path下文件不解析，但except_path路径下的子目录中的文件还是会被解析
     # 例如 把 apidata/tests 加入except_path，只是没有解析test_api_tools.py等测试文件，但子目录中file_parse_source 中的文件依旧会被解析
     # 如果需求是 解析test_api_tools.py等测试文件，但不解析file_parse_source中的__init__.py文件
     # 只需要把file_parse_source加入except_path
 
     # except_files
-    # 当不需要解析的文件比较少时，可以直接加入except_files
+    # 当不需要解析的文件比较少时或者该路径下也存在需要解析的文件时，可以直接将不需要解析的文件加入except_files
     #######################
     import os
     file_list = list()
